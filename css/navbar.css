@@ -1,0 +1,48 @@
+/* ── Navbar & Top Banner ──────────────────────────────── */
+.uppersection {
+  background-color: #ffc700;
+  margin-top: 0%;
+  height: 60px;
+  padding: 10px 0;
+}
+
+.uppersection h5 {
+  text-align: center;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 1.5rem;
+  line-height: 160%;
+  margin: 10px;
+  word-spacing: 5px;
+}
+
+.uppersection span {
+  color: black;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 5px;
+}
+
+.navbar {
+  height: 80px;
+  background-color: white;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar img {
+  width: 100px;
+  height: auto;
+}
+
+.links {
+  display: flex;
+}
+
+.links a {
+  margin-right: 10rem;
+  text-decoration: none;
+  color: black;
+}

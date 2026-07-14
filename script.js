@@ -86,7 +86,7 @@ ScrollTrigger.matchMedia({
 
     gsap.set(imgs, {
       clipPath: "inset(0)",
-      objectPosition: "0px 0%"
+      objectPosition: "50% 50%"
     });
 
     imgs.forEach((_, index) => {
@@ -103,12 +103,12 @@ ScrollTrigger.matchMedia({
           }, 0)
           .to(currentImage, {
             clipPath: "inset(0px 0px 100%)",
-            objectPosition: "0px 60%",
+            objectPosition: "50% 50%",
             duration: 1.5,
             ease: "none"
           }, 0)
           .to(nextImage, {
-            objectPosition: "0px 40%",
+            objectPosition: "50% 50%",
             duration: 1.5,
             ease: "none"
           }, 0);
@@ -120,7 +120,7 @@ ScrollTrigger.matchMedia({
 
   "(max-width: 768px)": function () {
     const mbTimeline = gsap.timeline();
-    gsap.set(imgs, { objectPosition: "0px 60%" });
+    gsap.set(imgs, { objectPosition: "50% 50%" });
 
     imgs.forEach((image, index) => {
       const innerTimeline = gsap.timeline({
@@ -134,7 +134,7 @@ ScrollTrigger.matchMedia({
 
       innerTimeline
         .to(image, {
-          objectPosition: "0px 30%",
+          objectPosition: "50% 50%",
           duration: 5,
           ease: "none"
         })

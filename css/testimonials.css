@@ -1,0 +1,233 @@
+/* ── Testimonial Carousel ─────────────────────────── */
+.tc-section {
+  background-color: #f2f2f0;
+  height: 100vh;
+  overflow: hidden;
+  box-sizing: border-box;
+  display: flex;
+  align-items: stretch;
+}
+
+.tc-inner {
+  display: flex;
+  gap: 60px;
+  align-items: center;
+  width: 100%;
+  padding: 0 0 0 60px;
+  box-sizing: border-box;
+}
+
+/* Left column — stays fixed while cards scroll */
+.tc-left {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  flex-shrink: 0;
+  width: 300px;
+}
+
+.tc-heading {
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(2.2rem, 3.5vw, 3.6rem);
+  font-weight: 800;
+  color: #1a1a1a;
+  line-height: 1.05;
+  letter-spacing: -2px;
+  margin: 0;
+}
+
+.tc-scroll-hint {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.88rem;
+  color: rgba(26, 26, 26, 0.45);
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tc-scroll-hint::before {
+  content: '';
+  display: block;
+  width: 32px;
+  height: 2px;
+  background: rgba(26, 26, 26, 0.3);
+  border-radius: 2px;
+}
+
+/* Nav buttons — hidden on desktop, shown on mobile */
+.tc-nav {
+  display: none;
+}
+
+.tc-btn {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 2px solid #d0d0cc;
+  background: transparent;
+  color: #1a1a1a;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, border-color 0.2s, transform 0.15s, opacity 0.25s;
+  flex-shrink: 0;
+}
+
+.tc-btn:hover:not(:disabled) {
+  background: #1a1a1a;
+  border-color: #1a1a1a;
+  color: #fff;
+  transform: scale(1.08);
+}
+
+.tc-btn:disabled {
+  cursor: default;
+}
+
+/* Right: cards track */
+.tc-track-wrap {
+  flex: 1;
+  min-width: 0;
+  overflow: visible;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.tc-track {
+  display: flex;
+  gap: 20px;
+  will-change: transform;
+  align-items: center;
+  padding-right: 60px;
+}
+
+/* Individual card */
+.tc-card {
+  flex-shrink: 0;
+  width: 500px;
+  min-height: 540px;
+  border-radius: 28px;
+  background-color: var(--card-bg);
+  color: var(--card-text);
+  padding: 36px 36px 32px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 28px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.tc-card:hover {
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.16);
+}
+
+/* Avatar circle */
+.tc-avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.tc-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Large bold quote */
+.tc-quote {
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(1.15rem, 2vw, 1.45rem);
+  font-weight: 700;
+  line-height: 1.5;
+  margin: 0;
+  flex: 1;
+  color: var(--card-text);
+}
+
+/* Author pill */
+.tc-pill {
+  display: inline-block;
+  width: fit-content;
+  padding: 14px 24px;
+  border-radius: 999px;
+  background-color: var(--btn-bg);
+  color: var(--btn-text);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: opacity 0.2s, transform 0.15s;
+  white-space: nowrap;
+}
+
+.tc-pill:hover {
+  opacity: 0.85;
+  transform: translateY(-2px);
+}
+
+/* ── Mobile: revert to tap carousel ── */
+@media (max-width: 768px) {
+  .tc-section {
+    height: auto;
+    overflow: hidden;
+  }
+
+  .tc-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 28px;
+    padding: 50px 0 50px 20px;
+  }
+
+  .tc-left {
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 20px;
+    box-sizing: border-box;
+    gap: 0;
+  }
+
+  .tc-scroll-hint {
+    display: none;
+  }
+
+  .tc-nav {
+    display: flex;
+    gap: 12px;
+  }
+
+  .tc-track-wrap {
+    overflow: hidden;
+    height: auto;
+    width: 100%;
+  }
+
+  .tc-track {
+    padding-right: 0;
+    cursor: grab;
+  }
+
+  .tc-track:active {
+    cursor: grabbing;
+  }
+
+  .tc-card {
+    width: 300px;
+    min-height: 380px;
+    padding: 28px 24px;
+  }
+
+  .tc-heading {
+    font-size: 2rem;
+  }
+}

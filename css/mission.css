@@ -1,0 +1,297 @@
+/* ── Mission Section ─────────────────────────────────── */
+
+/* Keyframe: gentle vertical float for the illustration */
+@keyframes missionFloat {
+  0% {
+    transform: translateY(0px) scale(1);
+  }
+
+  50% {
+    transform: translateY(-12px) scale(1.012);
+  }
+
+  100% {
+    transform: translateY(0px) scale(1);
+  }
+}
+
+/* Keyframe: slow drifting orbit for glowing orbs */
+@keyframes orbDrift1 {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.55;
+  }
+
+  33% {
+    transform: translate(30px, -20px) scale(1.15);
+    opacity: 0.7;
+  }
+
+  66% {
+    transform: translate(-20px, 15px) scale(0.9);
+    opacity: 0.45;
+  }
+
+  100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.55;
+  }
+}
+
+@keyframes orbDrift2 {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.4;
+  }
+
+  40% {
+    transform: translate(-25px, 18px) scale(1.2);
+    opacity: 0.6;
+  }
+
+  80% {
+    transform: translate(18px, -12px) scale(0.85);
+    opacity: 0.35;
+  }
+
+  100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.4;
+  }
+}
+
+@keyframes orbDrift3 {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.3;
+  }
+
+  50% {
+    transform: translate(15px, 25px) scale(1.1);
+    opacity: 0.5;
+  }
+
+  100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.3;
+  }
+}
+
+.mission-section {
+  background-color: #f0ece4;
+  padding: 40px 32px;
+  box-sizing: border-box;
+}
+
+/* The rounded card box */
+.mission-box {
+  max-width: 1240px;
+  margin: 0 auto;
+  background-color: #fffaeb;
+  border-radius: 28px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 4px 40px rgba(0, 0, 0, 0.07);
+  padding: 56px 56px 48px;
+  box-sizing: border-box;
+}
+
+.mission-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+/* ── TOP ROW ── */
+.mission-top {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: start;
+}
+
+/* Left */
+.mission-eyebrow {
+  display: block;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: #b07e00;
+  margin-bottom: 16px;
+}
+
+.mission-heading {
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 500;
+  line-height: 1.4;
+  color: #1C3A22;
+  margin: 0;
+  letter-spacing: -.64px;
+}
+
+.mission-heading-accent {
+  background: #ffdd66;
+  color: #1C3A22;
+  border-radius: 10px;
+  padding: 2px 14px 5px;
+  display: inline-block;
+  margin-top: 6px;
+  box-shadow: 0 3px 0 rgba(0, 0, 0, 0.08);
+}
+
+/* Right */
+.mission-top-right {
+  display: flex;
+  flex-direction: column;
+  padding-top: 54px;
+}
+
+.mission-body {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1.02rem;
+  font-weight: 400;
+  line-height: 1.8;
+  color: #555;
+  margin: 0;
+}
+
+/* Social proof strip */
+.mission-proof {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 20px 24px;
+  background: #fff;
+  border-radius: 14px;
+  border: 1px solid #e8e4da;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+}
+
+.mission-proof-logos {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.mission-proof-badge {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: #333;
+  background: #f5f0e0;
+  border: 1px solid #e0d8c0;
+  border-radius: 6px;
+  padding: 4px 10px;
+}
+
+.mission-proof-text {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.88rem;
+  color: #666;
+  margin: 0;
+  line-height: 1.6;
+}
+
+.mission-proof-text strong {
+  color: #222;
+  font-weight: 700;
+}
+
+/* ── ILLUSTRATION BANNER ── */
+.mission-banner {
+  width: 100%;
+  border-radius: 20px;
+  overflow: hidden;
+  background: linear-gradient(160deg, #e8e2d6 0%, #d9d2c5 100%);
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.06);
+  position: relative;
+  line-height: 0;
+  min-height: 480px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Animated glowing orbs */
+.mission-orb {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(32px);
+  z-index: 1;
+}
+
+.mission-orb--1 {
+  width: 220px;
+  height: 220px;
+  background: radial-gradient(circle, rgba(255, 199, 0, 0.55) 0%, transparent 70%);
+  top: -40px;
+  left: 10%;
+  animation: orbDrift1 8s ease-in-out infinite;
+}
+
+.mission-orb--2 {
+  width: 180px;
+  height: 180px;
+  background: radial-gradient(circle, rgba(120, 200, 120, 0.4) 0%, transparent 70%);
+  bottom: -20px;
+  right: 15%;
+  animation: orbDrift2 11s ease-in-out infinite;
+}
+
+.mission-orb--3 {
+  width: 140px;
+  height: 140px;
+  background: radial-gradient(circle, rgba(255, 140, 80, 0.35) 0%, transparent 70%);
+  top: 30%;
+  right: 30%;
+  animation: orbDrift3 7s ease-in-out infinite;
+}
+
+.mission-banner-img,
+.mission-banner-video {
+  width: 100%;
+  height: 520px;
+  max-height: 580px;
+  object-fit: cover;
+  object-position: center 85%;
+  display: block;
+  border-radius: 20px;
+  position: relative;
+  z-index: 2;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .mission-section {
+    padding: 20px 16px;
+  }
+
+  .mission-box {
+    padding: 36px 24px 32px;
+    border-radius: 20px;
+  }
+
+  .mission-top {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .mission-top-right {
+    padding-top: 0;
+  }
+
+  .mission-banner {
+    min-height: 340px;
+  }
+
+  .mission-banner-img,
+  .mission-banner-video {
+    height: 340px;
+    object-position: center 85%;
+  }
+}
