@@ -45,9 +45,24 @@
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
 }
 
-.navbar img {
-  width: 110px;
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+.nav-brand img {
+  width: 95px;
   height: auto;
+}
+
+.brand-text {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1.45rem;
+  font-weight: 600;
+  color: #111;
+  letter-spacing: -0.4px;
 }
 
 .nav-toggle {
@@ -79,6 +94,31 @@
   .navbar {
     padding: 0 20px;
     height: 70px;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .nav-brand {
+    position: static;
+    transform: none;
+    display: flex;
+    align-items: center;
+  }
+
+  .nav-brand img {
+    width: 75px;
+  }
+
+  .brand-text {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.25rem;
+    font-weight: 600;
+    letter-spacing: -0.3px;
+    color: #111;
   }
 
   .nav-toggle {

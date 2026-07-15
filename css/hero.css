@@ -180,7 +180,7 @@
 /* ── Mobile Responsive (`max-width: 768px`) ──────────────────── */
 @media (max-width: 768px) {
   .video-container {
-    height: 800px;
+    height: 480px;
   }
 
   .hero-overlay {
@@ -191,64 +191,76 @@
     height: 100%;
     display: flex;
     align-items: center;
-    padding: 0 16px;
+    padding: 0 14px;
     box-sizing: border-box;
     background: linear-gradient(to right, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0.55) 75%, rgba(0, 0, 0, 0.25) 100%);
   }
 
   .hero-content {
-    gap: 16px;
-    max-width: 100%;
+    gap: 10px;
     width: 100%;
+    max-width: 100%;
   }
 
   .hero-heading {
-    font-size: clamp(1.85rem, 7.5vw, 3rem);
+    font-size: clamp(1.4rem, 5.5vw, 1.85rem);
     line-height: 1.15;
-    letter-spacing: -1px;
+    letter-spacing: -0.5px;
+    margin: 0;
+  }
+
+  .hero-heading br {
+    display: none;
   }
 
   .hero-subtext {
-    font-size: clamp(0.88rem, 3.5vw, 1.05rem);
-    line-height: 1.5;
+    display: block;
+    font-size: clamp(0.75rem, 2.8vw, 0.88rem);
+    line-height: 1.4;
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0;
   }
 
   /* Cards stay side-by-side horizontally like desktop */
   .hero-cards {
     display: flex;
     flex-direction: row;
-    gap: 10px;
+    gap: 8px;
     height: auto;
-    min-height: 220px;
-    margin-top: 8px;
+    min-height: 160px;
+    margin-top: 4px;
   }
 
   .hero-card {
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 6px;
-    padding: 14px 12px;
-    border-radius: 10px;
+    gap: 5px;
+    padding: 10px 10px;
+    border-radius: 8px;
+    border-color: #ffc700;
   }
 
   .hero-card h3 {
-    font-size: clamp(0.95rem, 3.8vw, 1.3rem);
-    line-height: 1.25;
+    font-size: clamp(0.82rem, 3vw, 0.95rem);
+    line-height: 1.2;
+    margin: 0;
+    color: #fff;
   }
 
   .hero-card p {
-    font-size: clamp(0.78rem, 3vw, 1rem);
-    line-height: 1.4;
+    font-size: clamp(0.68rem, 2.5vw, 0.78rem);
+    line-height: 1.35;
     flex: 1;
     margin: 0;
+    color: rgba(255, 255, 255, 0.85);
   }
 
   .btn-primary,
   .btn-outline {
     width: 100%;
-    padding: 9px 10px;
-    font-size: clamp(0.75rem, 2.8vw, 0.88rem);
+    padding: 7px 8px;
+    font-size: clamp(0.68rem, 2.4vw, 0.76rem);
     text-align: center;
     box-sizing: border-box;
     margin-top: auto;
