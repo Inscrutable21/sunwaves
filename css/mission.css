@@ -268,30 +268,60 @@
 /* ── RESPONSIVE ── */
 @media (max-width: 900px) {
   .mission-section {
-    padding: 20px 16px;
+    padding: 24px 16px;
   }
 
   .mission-box {
-    padding: 36px 24px 32px;
+    padding: 32px 20px 28px;
     border-radius: 20px;
+  }
+
+  .mission-inner {
+    gap: 36px;
   }
 
   .mission-top {
     grid-template-columns: 1fr;
-    gap: 36px;
+    gap: 28px;
+  }
+
+  .mission-heading {
+    font-size: clamp(1.7rem, 7vw, 2.4rem);
   }
 
   .mission-top-right {
     padding-top: 0;
   }
 
+  .mission-body {
+    font-size: 0.96rem;
+    line-height: 1.65;
+  }
+
   .mission-banner {
-    min-height: 340px;
+    min-height: 260px;
+    border-radius: 16px;
+  }
+
+  .mission-orb--1 {
+    width: 140px;
+    height: 140px;
+  }
+
+  .mission-orb--2 {
+    width: 120px;
+    height: 120px;
+  }
+
+  .mission-orb--3 {
+    width: 100px;
+    height: 100px;
   }
 
   .mission-banner-img,
   .mission-banner-video {
-    height: 340px;
+    height: 260px;
+    border-radius: 16px;
     object-position: center 85%;
   }
 }
