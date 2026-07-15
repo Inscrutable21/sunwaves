@@ -180,64 +180,77 @@
 /* ── Mobile Responsive (`max-width: 768px`) ──────────────────── */
 @media (max-width: 768px) {
   .video-container {
-    height: auto;
-    min-height: 100vh;
-    padding: 100px 0 60px;
-    display: flex;
-    align-items: center;
+    height: 800px;
   }
 
   .hero-overlay {
-    position: relative;
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: auto;
-    padding: 0 20px;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0.45) 100%);
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    box-sizing: border-box;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0.55) 75%, rgba(0, 0, 0, 0.25) 100%);
   }
 
   .hero-content {
-    gap: 20px;
+    gap: 16px;
     max-width: 100%;
     width: 100%;
   }
 
   .hero-heading {
-    font-size: clamp(2.1rem, 8vw, 3rem);
+    font-size: clamp(1.85rem, 7.5vw, 3rem);
     line-height: 1.15;
     letter-spacing: -1px;
   }
 
   .hero-subtext {
-    font-size: 0.98rem;
-    line-height: 1.6;
+    font-size: clamp(0.88rem, 3.5vw, 1.05rem);
+    line-height: 1.5;
   }
 
+  /* Cards stay side-by-side horizontally like desktop */
   .hero-cards {
-    flex-direction: column;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
     height: auto;
-    gap: 16px;
-    margin-top: 12px;
+    min-height: 220px;
+    margin-top: 8px;
   }
 
   .hero-card {
-    height: auto;
-    padding: 22px 20px;
-    flex: none;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 14px 12px;
+    border-radius: 10px;
   }
 
   .hero-card h3 {
-    font-size: 1.35rem;
+    font-size: clamp(0.95rem, 3.8vw, 1.3rem);
+    line-height: 1.25;
   }
 
   .hero-card p {
-    font-size: 0.98rem;
-    margin-bottom: 6px;
+    font-size: clamp(0.78rem, 3vw, 1rem);
+    line-height: 1.4;
+    flex: 1;
+    margin: 0;
   }
 
   .btn-primary,
   .btn-outline {
-    width: fit-content;
-    padding: 12px 24px;
+    width: 100%;
+    padding: 9px 10px;
+    font-size: clamp(0.75rem, 2.8vw, 0.88rem);
     text-align: center;
+    box-sizing: border-box;
+    margin-top: auto;
   }
 }
