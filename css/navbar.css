@@ -40,7 +40,8 @@
   align-items: center;
   padding: 0 40px;
   box-sizing: border-box;
-  position: relative;
+  position: sticky;
+  top: 0;
   z-index: 1000;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
 }
@@ -71,7 +72,7 @@
 
 .links {
   display: flex;
-  gap: 3rem;
+  gap: clamp(1.2rem, 2.2vw, 2.8rem);
   align-items: center;
 }
 
@@ -185,5 +186,26 @@
     padding: 8px 20px;
     width: 100%;
     text-align: center;
+  }
+}
+
+/* ── Section Scroll Offsets for Sticky Navbar ─────────── */
+#hero,
+#who-we-are,
+#what-we-offer,
+#mission,
+#testimonials,
+#contact {
+  scroll-margin-top: 80px;
+}
+
+@media (max-width: 768px) {
+  #hero,
+  #who-we-are,
+  #what-we-offer,
+  #mission,
+  #testimonials,
+  #contact {
+    scroll-margin-top: 70px;
   }
 }

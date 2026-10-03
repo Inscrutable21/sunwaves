@@ -28,6 +28,7 @@ const lenis = new Lenis({
   easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
   touchMultiplier: 2
 });
+window.lenis = lenis;
 
 function raf(time) {
   lenis.raf(time);
@@ -152,33 +153,69 @@ if (document.querySelector('.arch')) {
   });
 }
 
-/* ── Mobile Navigation Menu Toggle ────────────────────────── */
-function initMobileNavbar() {
+/* ── Navigation & Smooth Scroll to Sections ────────────────────────── */
+function initNavigation() {
   const navToggle = document.getElementById('nav-toggle');
   const linksMenu = document.querySelector('.navbar .links');
-  if (!navToggle || !linksMenu) return;
 
-  navToggle.addEventListener('click', (e) => {
-    e.stopPropagation();
-    navToggle.classList.toggle('active');
-    linksMenu.classList.toggle('active');
-  });
-
-  // Close menu when clicking a link
-  linksMenu.querySelectorAll('a').forEach((link) => {
-    link.addEventListener('click', () => {
-      navToggle.classList.remove('active');
-      linksMenu.classList.remove('active');
+  if (navToggle && linksMenu) {
+    navToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      navToggle.classList.toggle('active');
+      linksMenu.classList.toggle('active');
     });
-  });
 
-  // Close menu when clicking outside
-  document.addEventListener('click', (e) => {
-    if (linksMenu.classList.contains('active') && !linksMenu.contains(e.target) && !navToggle.contains(e.target)) {
-      navToggle.classList.remove('active');
-      linksMenu.classList.remove('active');
-    }
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (linksMenu.classList.contains('active') && !linksMenu.contains(e.target) && !navToggle.contains(e.target)) {
+        navToggle.classList.remove('active');
+        linksMenu.classList.remove('active');
+      }
+    });
+  }
+
+  // Smooth scroll handler for all anchor links pointing to sections
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener('click', function (e) {
+      const targetId = this.getAttribute('href');
+      if (!targetId || targetId === '#') return;
+
+      const targetElement = document.querySelector(targetId);
+      if (targetElement) {
+        e.preventDefault();
+
+        // Close mobile dropdown if open
+        if (navToggle && linksMenu) {
+          navToggle.classList.remove('active');
+          linksMenu.classList.remove('active');
+        }
+
+        const nav = document.querySelector('.navbar');
+        const navOffset = nav ? nav.offsetHeight : 0;
+
+        if (window.lenis) {
+          window.lenis.scrollTo(targetElement, {
+            offset: -navOffset,
+            duration: 1.2,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
+          });
+        } else {
+          const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+          window.scrollTo({
+            top: elementPosition - navOffset,
+            behavior: 'smooth'
+          });
+        }
+
+        // Update URL hash cleanly
+        if (history.pushState) {
+          history.pushState(null, null, targetId);
+        } else {
+          location.hash = targetId;
+        }
+      }
+    });
   });
 }
 
-initMobileNavbar();
+initNavigation();
