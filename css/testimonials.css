@@ -55,9 +55,17 @@
   border-radius: 2px;
 }
 
-/* Nav buttons — hidden on desktop, shown on mobile */
-.tc-nav {
+.desktop-hint {
+  display: inline;
+}
+
+.mobile-hint {
   display: none;
+}
+
+/* Nav buttons — hidden on desktop and mobile */
+.tc-nav {
+  display: none !important;
 }
 
 .tc-btn {
@@ -173,7 +181,7 @@
   transform: translateY(-2px);
 }
 
-/* ── Mobile: revert to tap carousel ── */
+/* ── Mobile: hand swipe / touch slider ── */
 @media (max-width: 768px) {
   .tc-section {
     height: auto;
@@ -183,48 +191,80 @@
   .tc-inner {
     flex-direction: column;
     align-items: flex-start;
-    gap: 24px;
-    padding: 40px 0 40px 16px;
+    gap: 20px;
+    padding: 44px 0 44px 20px;
   }
 
   .tc-left {
     width: 100%;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    padding-right: 16px;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding-right: 20px;
     box-sizing: border-box;
-    gap: 12px;
+    gap: 6px;
   }
 
   .tc-heading {
-    font-size: clamp(1.8rem, 6vw, 2.4rem);
-    line-height: 1.1;
+    font-size: clamp(2rem, 6.8vw, 2.6rem);
+    line-height: 1.12;
   }
 
-  .tc-scroll-hint {
+  .desktop-hint {
     display: none;
   }
 
+  .mobile-hint {
+    display: inline-block;
+  }
+
+  .tc-scroll-hint {
+    display: block;
+    font-size: 0.84rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: rgba(26, 26, 26, 0.55);
+    margin: 4px 0 0;
+  }
+
+  .tc-scroll-hint::before {
+    display: none;
+  }
+
+  /* Completely hide buttons on mobile */
   .tc-nav {
-    display: flex;
-    gap: 10px;
+    display: none !important;
   }
 
-  .tc-btn {
-    width: 46px;
-    height: 46px;
-  }
-
+  /* Native touch-scroll track wrap with CSS scroll-snap */
   .tc-track-wrap {
-    overflow: hidden;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
     height: auto;
     width: 100%;
+    padding-bottom: 12px;
+  }
+
+  .tc-track-wrap::-webkit-scrollbar {
+    display: none;
   }
 
   .tc-track {
-    padding-right: 0;
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 16px !important;
+    width: max-content !important;
+    padding-right: 24px !important;
+    transform: none !important;
     cursor: grab;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: pan-x;
   }
 
   .tc-track:active {
@@ -232,11 +272,15 @@
   }
 
   .tc-card {
-    width: min(84vw, 360px);
+    scroll-snap-align: start;
+    scroll-snap-stop: normal;
+    flex-shrink: 0;
+    width: min(84vw, 340px) !important;
     min-height: auto;
-    padding: 24px 20px;
-    gap: 20px;
+    padding: 26px 22px;
+    gap: 18px;
     border-radius: 20px;
+    box-sizing: border-box;
   }
 
   .tc-avatar {

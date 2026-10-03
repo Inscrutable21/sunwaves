@@ -86,53 +86,48 @@ function initTestimonials() {
         };
     });
 
-    // ── Mobile: prev / next buttons + swipe ──
+    // ── Mobile: native touch swipe / drag-to-scroll slider by hand ──
     mm.add('(max-width: 768px)', () => {
-        const GAP = 20;
-        let current = 0;
+        // Clear any GSAP inline transforms from desktop ScrollTrigger
+        gsap.set(track, { clearProps: 'all' });
 
-        function stepWidth() {
-            return cards[0].getBoundingClientRect().width + GAP;
-        }
+        // Add mouse drag-to-scroll for desktop testing / trackpad hand-sliding
+        let isDown = false;
+        let startX = 0;
+        let scrollLeft = 0;
 
-        function updateButtons() {
-            if (!prevBtn || !nextBtn) return;
-            prevBtn.disabled = current === 0;
-            nextBtn.disabled = current === cards.length - 1;
-            prevBtn.style.opacity = current === 0 ? '0.3' : '1';
-            nextBtn.style.opacity = current === cards.length - 1 ? '0.3' : '1';
-        }
+        const onMouseDown = (e) => {
+            isDown = true;
+            startX = e.pageX - wrap.offsetLeft;
+            scrollLeft = wrap.scrollLeft;
+        };
 
-        function slideTo(index) {
-            current = Math.max(0, Math.min(index, cards.length - 1));
-            gsap.to(track, { x: -(current * stepWidth()), duration: 0.7, ease: 'power3.inOut' });
-            updateButtons();
-        }
+        const onMouseLeave = () => {
+            isDown = false;
+        };
 
-        if (prevBtn) prevBtn.addEventListener('click', () => slideTo(current - 1));
-        if (nextBtn) nextBtn.addEventListener('click', () => slideTo(current + 1));
+        const onMouseUp = () => {
+            isDown = false;
+        };
 
-        // Swipe / drag support
-        let startX = 0, moved = false, dragging = false;
-        track.addEventListener('pointerdown', e => {
-            dragging = true; moved = false; startX = e.clientX;
-            track.setPointerCapture(e.pointerId);
-        });
-        track.addEventListener('pointermove', e => {
-            if (dragging && Math.abs(e.clientX - startX) > 5) moved = true;
-        });
-        track.addEventListener('pointerup', e => {
-            if (!dragging) return; dragging = false;
-            if (!moved) return;
-            const diff = startX - e.clientX;
-            if (Math.abs(diff) > 48) slideTo(diff > 0 ? current + 1 : current - 1);
-        });
+        const onMouseMove = (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - wrap.offsetLeft;
+            const walk = (x - startX) * 1.4;
+            wrap.scrollLeft = scrollLeft - walk;
+        };
 
-        const onResize = () => gsap.set(track, { x: -(current * stepWidth()) });
-        window.addEventListener('resize', onResize);
-        updateButtons();
+        wrap.addEventListener('mousedown', onMouseDown);
+        wrap.addEventListener('mouseleave', onMouseLeave);
+        wrap.addEventListener('mouseup', onMouseUp);
+        wrap.addEventListener('mousemove', onMouseMove);
 
-        // cleanup
-        return () => window.removeEventListener('resize', onResize);
+        return () => {
+            wrap.removeEventListener('mousedown', onMouseDown);
+            wrap.removeEventListener('mouseleave', onMouseLeave);
+            wrap.removeEventListener('mouseup', onMouseUp);
+            wrap.removeEventListener('mousemove', onMouseMove);
+        };
     });
 }
