@@ -180,9 +180,19 @@
 /* ── Mobile Responsive (`max-width: 768px`) ──────────────────── */
 @media (max-width: 768px) {
   .video-container {
-    height: 480px;
+    height: clamp(520px, 80vh, 620px);
   }
 
+  /* Make video overlay much lighter so background video is clearly visible */
+  .video-container::after {
+    opacity: 0.10;
+  }
+
+  .bg-video {
+    object-position: center 30%;
+  }
+
+  /* Bottom-anchored gradient so top 50%+ of the video is completely unobstructed */
   .hero-overlay {
     position: absolute;
     top: 0;
@@ -190,10 +200,16 @@
     width: 100%;
     height: 100%;
     display: flex;
-    align-items: center;
-    padding: 0 14px;
+    align-items: flex-end;
+    padding: 0 16px 26px 16px;
     box-sizing: border-box;
-    background: linear-gradient(to right, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0.55) 75%, rgba(0, 0, 0, 0.25) 100%);
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.05) 0%,
+      rgba(0, 0, 0, 0.12) 35%,
+      rgba(0, 0, 0, 0.58) 65%,
+      rgba(0, 0, 0, 0.92) 100%
+    );
   }
 
   .hero-content {
@@ -203,31 +219,37 @@
   }
 
   .hero-heading {
-    font-size: clamp(1.4rem, 5.5vw, 1.85rem);
+    font-size: clamp(1.55rem, 6vw, 2rem);
     line-height: 1.15;
     letter-spacing: -0.5px;
     margin: 0;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
   }
 
   .hero-heading br {
     display: none;
   }
 
+  /* Compact 2-line subtext so text does not take over the hero area */
   .hero-subtext {
-    display: block;
-    font-size: clamp(0.75rem, 2.8vw, 0.88rem);
-    line-height: 1.4;
-    color: rgba(255, 255, 255, 0.9);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    font-size: clamp(0.78rem, 2.6vw, 0.86rem);
+    line-height: 1.42;
+    color: rgba(255, 255, 255, 0.88);
     margin: 0;
+    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.5);
   }
 
-  /* Cards stay side-by-side horizontally like desktop */
+  /* Sleek compact glass action cards side-by-side */
   .hero-cards {
     display: flex;
     flex-direction: row;
-    gap: 8px;
+    gap: 10px;
     height: auto;
-    min-height: 160px;
+    min-height: unset;
     margin-top: 4px;
   }
 
@@ -235,34 +257,54 @@
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 5px;
-    padding: 10px 10px;
-    border-radius: 8px;
-    border-color: #ffc700;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 12px 12px;
+    border-radius: 14px;
+    background: rgba(18, 18, 18, 0.45);
+    border: 1px solid rgba(255, 199, 0, 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  }
+
+  .card-icon {
+    display: none;
   }
 
   .hero-card h3 {
-    font-size: clamp(0.82rem, 3vw, 0.95rem);
-    line-height: 1.2;
+    font-size: clamp(0.8rem, 2.8vw, 0.92rem);
+    line-height: 1.25;
+    font-weight: 600;
     margin: 0;
-    color: #fff;
+    color: #ffffff;
   }
 
+  /* Hide long redundant card descriptions on mobile to keep video visible */
   .hero-card p {
-    font-size: clamp(0.68rem, 2.5vw, 0.78rem);
-    line-height: 1.35;
-    flex: 1;
-    margin: 0;
-    color: rgba(255, 255, 255, 0.85);
+    display: none;
   }
 
   .btn-primary,
   .btn-outline {
     width: 100%;
-    padding: 7px 8px;
-    font-size: clamp(0.68rem, 2.4vw, 0.76rem);
+    padding: 8px 10px;
+    font-size: clamp(0.72rem, 2.4vw, 0.8rem);
+    font-weight: 700;
+    border-radius: 999px;
     text-align: center;
     box-sizing: border-box;
-    margin-top: auto;
+    margin-top: 2px;
+  }
+
+  .btn-primary {
+    background-color: #ffc700;
+    color: #000;
+  }
+
+  .btn-outline {
+    background: rgba(255, 255, 255, 0.12);
+    border: 1.5px solid rgba(255, 255, 255, 0.7);
+    color: #ffffff;
   }
 }
