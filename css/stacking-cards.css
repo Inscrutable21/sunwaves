@@ -16,9 +16,9 @@
 
 /* Header above the cards */
 .sc-header {
-  max-width: 1240px;
+  max-width: 820px;
   margin: 0 auto;
-  padding: 0 0 60px;
+  padding: 30px 20px 60px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -27,22 +27,39 @@
 
 .sc-label {
   font-family: 'DM Sans', sans-serif;
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 3px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 2px;
   text-transform: uppercase;
-  color: #b07e00;
+  color: #1C3A22;
+  background: rgba(28, 58, 34, 0.08);
+  border: 1px solid rgba(28, 58, 34, 0.12);
+  border-radius: 999px;
+  padding: 6px 18px;
   margin: 0 0 16px;
+  display: inline-block;
 }
 
 .sc-title {
   font-family: 'DM Sans', sans-serif;
-  font-size: clamp(2rem, 4vw, 3rem);
-  font-weight: 400;
-  line-height: 1.4;
-  color: black;
-  letter-spacing: -.64px;
+  font-size: clamp(2.4rem, 5vw, 3.6rem);
+  font-weight: 800;
+  line-height: 1.15;
+  color: #1C3A22;
+  letter-spacing: -1.2px;
   margin: 0;
+  text-align: center;
+}
+
+.sc-subtitle {
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(1rem, 2.2vw, 1.15rem);
+  font-weight: 400;
+  color: rgba(26, 26, 26, 0.65);
+  line-height: 1.6;
+  max-width: 580px;
+  margin: 14px auto 0;
+  text-align: center;
 }
 
 /* Cards list */
@@ -337,11 +354,17 @@
   }
 
   .sc-header {
-    padding: 0 0 40px;
+    padding: 10px 16px 44px;
   }
 
   .sc-title {
-    font-size: clamp(1.6rem, 6vw, 2.2rem);
+    font-size: clamp(2rem, 7vw, 2.5rem);
+    letter-spacing: -0.8px;
+  }
+
+  .sc-subtitle {
+    font-size: 0.95rem;
+    margin-top: 10px;
   }
 
   .sc-card__content {
