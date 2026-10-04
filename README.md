@@ -143,4 +143,4 @@ Then open `http://localhost:8000`.
 
 ## 📄 Copyright
 
-&copy; 2025–2026 **Sunwaves Enterprise (U) Ltd.** All rights reserved.
+&copy; 2026 **Sunwaves Enterprise (U) Ltd.** All rights reserved.

@@ -219,3 +219,13 @@ function initNavigation() {
 }
 
 initNavigation();
+
+/* ── Dynamic Copyright Year ─────────────────────────────────────── */
+function initCopyrightYear() {
+  const yearEl = document.getElementById('current-year');
+  if (yearEl) {
+    yearEl.textContent = new Date().getFullYear();
+  }
+}
+
+initCopyrightYear();
