@@ -1,6 +1,6 @@
-# robots.txt for Sunwaves Uganda Ltd (https://sunwavespharma.com/)
+# robots.txt for Sunwaves Pharma (https://www.sunwavespharma.com/)
 User-agent: *
 Allow: /
 
 # Sitemaps
-Sitemap: https://sunwavespharma.com/sitemap.xml
+Sitemap: https://www.sunwavespharma.com/sitemap.xml
